@@ -98,7 +98,13 @@ const ClientePantalla: () => React$Node = ({ navigation }) => {
 
     }
 
+    const abrirInsurance = () => {
+        navigation.navigate('Insurance');
+    }
 
+    const abrirLorem = () => {
+        navigation.navigate("Lorem");
+    }
 
 
 
@@ -180,6 +186,20 @@ const ClientePantalla: () => React$Node = ({ navigation }) => {
                     title="Ir a la pantalla de Clientes"
                     onPress={() => {
                         cargarClientes();
+                    }}
+                />
+            </View>
+            <View>
+                <Button
+                    title="Ir a insurance"
+                    onPress={() => {
+                        abrirInsurance();
+                    }}
+                />
+                <Button
+                    title="Ir a la página de Lorem"
+                    onPress={() => {
+                        abrirLorem();
                     }}
                 />
             </View>

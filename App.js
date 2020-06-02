@@ -13,6 +13,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Cliente from './src/screens/Cliente';
 import ListadoClientes from './src/screens/ListadoClientes';
 import EditarCliente from './src/screens/EditarCliente';
+import Insurance from './src/screens/Insurance';
+import Lorem from './src/screens/Lorem';
 
 
 const Stack = createStackNavigator();
@@ -25,6 +27,8 @@ const App: () => React$Node = () => {
         <Stack.Screen name="Home" component={Cliente} />
         <Stack.Screen name="Details" component={ListadoClientes} />
         <Stack.Screen name="Edit" component={EditarCliente} />
+        <Stack.Screen name="Insurance" component={Insurance} />
+        <Stack.Screen name="Lorem" component={Lorem} />
       </Stack.Navigator>
     </NavigationContainer>
   );
