@@ -104,10 +104,6 @@ const Insurance: () => React$Node = ({ route, navigation }) => {
                         color="#fcba03"
                     />
                 </View>
-
-
-
-
             </View>
         </>
     );

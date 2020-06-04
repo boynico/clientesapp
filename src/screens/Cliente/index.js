@@ -16,11 +16,16 @@ import {
     TextInput,
     Button
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, Dimensions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ButtonAdd } from '../../components/ButtonAddClient';
+import { ButtonNavigate } from '../../components/ButtonNavigate';
+import { ButtonType } from '../../components/Button3';
+
 
 
 const ClientePantalla: () => React$Node = ({ navigation }) => {
+
 
     //cada una de las partes del objeto que guardo en State
     const [clienteNombre, setclienteNombre] = useState('');
@@ -145,64 +150,70 @@ const ClientePantalla: () => React$Node = ({ navigation }) => {
     //UI
     return (
         <>
-            <View>
-                <Text style={styles.titulo}>Insertar Cliente</Text>
+            <View style={styles.viewInput}>
+                <View>
+                    <Text style={styles.titulo}>Insertar Cliente</Text>
+                </View>
+
+                <View style={styles.estiloForm}>
+                    <View>
+                        <Text style={styles.inputTitulo}> Nombre </Text>
+                        <TextInput
+                            placeholder="Introduzca su nombre"
+                            onChangeText={(val) => setclienteNombre(val)}
+                            value={clienteNombre}
+                        />
+                    </View>
+                    <View>
+                        <Text style={styles.inputTitulo}> Apellidos </Text>
+                        <TextInput
+                            placeholder="Introduzca sus apellidos"
+                            onChangeText={(val) => setclienteApellido(val)}
+                            value={clienteApellido}
+                        />
+                    </View>
+                    <View>
+                        <Text style={styles.inputTitulo}> Correo </Text>
+                        <TextInput
+                            placeholder="Introduzca su correo"
+                            onChangeText={(val) => setclienteCorreo(val)}
+                            value={clienteCorreo}
+                        />
+                    </View>
+                </View>
             </View>
 
-            <View style={styles.estiloForm}>
-                <View>
-                    <Text style={styles.inputTitulo}> Nombre </Text>
-                    <TextInput
-                        placeholder="Introduzca su nombre"
-                        onChangeText={(val) => setclienteNombre(val)}
-                        value={clienteNombre}
-                    />
+
+            <View style={styles.viewButtons}>
+                <ButtonAdd
+                    onPress={insertarCliente}>
+                    Añadir Cliente
+                </ButtonAdd>
+
+                <ButtonNavigate
+                    onPress={() => { cargarClientes(); }}>
+                    Ir a la pantalla de clientes
+                </ButtonNavigate>
+
+                <View style={styles.dobleButton}>
+                    <ButtonType
+                        onPress={() => {
+                            abrirInsurance();
+                        }}>
+                        Insurance
+                    </ButtonType>
+
+                    <ButtonType
+                        onPress={() => {
+                            abrirLorem();
+                        }}>
+                        List
+                    </ButtonType>
                 </View>
-                <View>
-                    <Text style={styles.inputTitulo}> Apellidos </Text>
-                    <TextInput
-                        placeholder="Introduzca sus apellidos"
-                        onChangeText={(val) => setclienteApellido(val)}
-                        value={clienteApellido}
-                    />
-                </View>
-                <View>
-                    <Text style={styles.inputTitulo}> Correo </Text>
-                    <TextInput
-                        placeholder="Introduzca su correo"
-                        onChangeText={(val) => setclienteCorreo(val)}
-                        value={clienteCorreo}
-                    />
-                </View>
+
+
             </View>
-            <View style={styles.estiloBoton}>
-                <Button
-                    onPress={insertarCliente}
-                    title="Añadir cliente"
-                />
-            </View>
-            <View style={styles.btnDetails}>
-                <Button
-                    title="Ir a la pantalla de Clientes"
-                    onPress={() => {
-                        cargarClientes();
-                    }}
-                />
-            </View>
-            <View>
-                <Button
-                    title="Ir a insurance"
-                    onPress={() => {
-                        abrirInsurance();
-                    }}
-                />
-                <Button
-                    title="Ir a la página de Lorem"
-                    onPress={() => {
-                        abrirLorem();
-                    }}
-                />
-            </View>
+
         </>
     );
 };
@@ -220,17 +231,27 @@ const styles = StyleSheet.create({
     inputTitulo: {
         textAlign: "center",
         fontSize: 15,
+        fontWeight: "bold",
     },
     inputBox: {
         fontSize: 15,
     },
-    estiloBoton: {
-        width: 200,
-        alignSelf: "center"
-    }, btnDetails: {
+    btnDetails: {
         width: 300,
         alignSelf: "center",
         marginTop: 250,
+    },
+    viewButtons: {
+        flexDirection: "column",
+        justifyContent: "space-around",
+        flex: 1,
+    },
+    viewInput: {
+        flex: 1,
+    },
+    dobleButton: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
     }
 });
 
