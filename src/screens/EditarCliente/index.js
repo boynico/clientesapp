@@ -9,6 +9,7 @@ import {
     Button,
     FlatList
 } from 'react-native';
+import { ButtonAdd } from '../../components/ButtonAddClient';
 
 
 const EditarCliente: () => React$Node = ({ route, navigation }) => {
@@ -79,12 +80,11 @@ const EditarCliente: () => React$Node = ({ route, navigation }) => {
                     />
                 </View>
             </View>
-            <View style={styles.estiloBoton}>
-                <Button
-                    title="Editar cliente"
-                    onPress={() => editar(objetoparam.id)}
-                />
-            </View>
+            <ButtonAdd
+                onPress={() => editar(objetoparam.id)}>
+                Editar Cliente
+                </ButtonAdd>
+            
         </>
     );
 };
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     inputTitulo: {
         textAlign: "center",
         fontSize: 15,
+        fontWeight: "bold",
     },
     inputBox: {
         fontSize: 15,

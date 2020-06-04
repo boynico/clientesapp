@@ -9,6 +9,7 @@ import {
     Button,
     FlatList
 } from 'react-native';
+import { RowClient } from '../../components/RowClient';
 
 
 const ListadoClientes: () => React$Node = ({ route, navigation }) => {
@@ -47,28 +48,22 @@ const ListadoClientes: () => React$Node = ({ route, navigation }) => {
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
                         <>
-                            <View style={{ marginBottom: 50 }}>
-                                <View style={{ marginStart: 5, alignSelf: "center", backgroundColor: "#575656", width: 350 }}>
-                                    <Text style={{ fontWeight: "bold", fontSize: 17, padding: 5, color: "white" }}>Nombre Completo: {item.nombre} {item.apellido}</Text>
-                                </View>
-                                <View style={{ marginStart: 5, alignSelf: "center", backgroundColor: "#575656", width: 350 }}>
-                                    <Text style={{ color: 'white', fontWeight: "bold", fontSize: 17, padding: 5 }}>Correo: {item.correo} </Text>
-                                </View>
-                                <View style={{ width: 350, alignSelf: "center", flexDirection: 'row', justifyContent: "center" }}>
-                                    <Button
-                                        color="#ff4f4f"
-                                        title="Borrar Cliente"
-                                        onPress={() => borrarCliente(item.id)}
-                                    />
-                                    <Button
-                                        color="#8592c9"
-                                        title="Editar Cliente"
-                                        onPress={() => editarCliente(item)}
-                                    />
-                                </View>
+                            <RowClient>
+                                {item.nombre} {item.apellido} {item.correo}
+                            </RowClient>
 
+                            <View style={styles.rowButtons}>
+                                <Button
+                                    color="#a587e0"
+                                    title="Borrar Cliente"
+                                    onPress={() => borrarCliente(item.id)}
+                                />
+                                <Button
+                                    color="#ff8c80"
+                                    title="Editar Cliente"
+                                    onPress={() => editarCliente(item)}
+                                />
                             </View>
-
                         </>
                     )
                     }
@@ -81,5 +76,14 @@ const ListadoClientes: () => React$Node = ({ route, navigation }) => {
     );
 };
 
+const styles = StyleSheet.create({
+    rowButtons: {
+        width: 350, 
+        alignSelf: "center", 
+        flexDirection: 'row', 
+        justifyContent: "center",
+    },
+
+});
 
 export default ListadoClientes;
